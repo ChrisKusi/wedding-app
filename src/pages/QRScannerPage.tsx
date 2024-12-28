@@ -13,35 +13,23 @@ const QRScannerPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      {/* Title */}
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">QR Code Scanner</h1>
+    <div className="qr-scanner-page">
+      <h1>QR Code Scanner</h1>
 
-      {/* QR Scanner */}
-      <div className="w-full max-w-sm">
-        <QrReader
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={{ width: "100%" }}
-          className="border border-gray-300 shadow-md rounded-lg"
-        />
-      </div>
+      <QrReader
+        delay={300}
+        onError={handleError}
+        onScan={handleScan}
+        style={{ width: "300px" }}
+      />
 
-      {/* Scanned Message */}
       {scannedData && (
-        <div className="mt-4 p-4 rounded-lg shadow-md text-white bg-emerald-600">
+        <div className="scanned-message">
           <p>Scanned Code: {scannedData}</p>
         </div>
       )}
 
-      {/* Get Started Button */}
-      <button
-        className="mt-6 px-6 py-2 bg-emerald-600 text-white font-semibold rounded-md hover:bg-emerald-700 transition"
-        onClick={() => setScannedData(null)}
-      >
-        Get Started
-      </button>
+      <button onClick={() => setScannedData(null)}>Get Started</button>
     </div>
   );
 };

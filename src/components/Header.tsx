@@ -5,25 +5,22 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full flex items-center justify-between p-4 bg-emerald-600 text-white shadow-md">
+    <header className="header">
       {/* Logo */}
-      <img
-        src="/img/img1.jpg" // Replace with the correct image path
-        alt="Logo"
-        className="w-12 h-12 rounded-full object-cover"
-      />
+      <div className="header-logo">
+        <img
+          src="/img/img1.jpg" // Replace with the correct image path
+          alt="Logo"
+          className="logo-image"
+        />
+      </div>
 
       {/* Names */}
-      <h1 className="text-lg md:text-xl font-bold text-center">
-        Louis & Magdalene
-      </h1>
+      <h1 className="header-title">Louis & Magdalene</h1>
 
       {/* People Icon */}
-      <Link to="/attendees">
-        <FontAwesomeIcon
-          icon={faUsers}
-          className="text-2xl hover:text-gray-200 cursor-pointer"
-        />
+      <Link to="/attendees" className="header-icon">
+        <FontAwesomeIcon icon={faUsers} />
       </Link>
     </header>
   );
