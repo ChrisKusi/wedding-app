@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import QrReader from "react-qr-scanner";
 
 const QRScannerPage: React.FC = () => {
+  const [isCameraActive, setIsCameraActive] = useState(false);
   const [scannedData, setScannedData] = useState<string | null>(null);
 
   const handleScan = (data: any) => {
-    if (data) setScannedData(data.text);
+    if (data) {
+      setScannedData(data.text);
+      console.log("Scanned Code:", data.text); // Log the scanned data for debugging
+      // Add logic here to update records or perform an action with the scanned data
+    }
   };
 
   const handleError = (error: any) => {
@@ -14,22 +19,43 @@ const QRScannerPage: React.FC = () => {
 
   return (
     <div className="qr-scanner-page">
-      <h1>QR Code Scanner</h1>
+      {/* Title */}
+      <h1 className="qr-title">Scan to Register</h1>
 
-      <QrReader
-        delay={300}
-        onError={handleError}
-        onScan={handleScan}
-        style={{ width: "300px" }}
-      />
+      {/* Scanner Card */}
+      <div className="scanner-card">
+        {!isCameraActive ? (
+          <img
+            src="img\QR.png" // Replace with your placeholder image
+            alt="Placeholder"
+            className="placeholder-image"
+          />
+        ) : (
+          <QrReader
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: "100%", height: "100%" }}
+          />
+        )}
+      </div>
 
+      {/* Activate Camera Button */}
+      {!isCameraActive && (
+        <button
+          onClick={() => setIsCameraActive(true)}
+          className="activate-camera-button"
+        >
+          Activate Camera
+        </button>
+      )}
+
+      {/* Scanned Data Display */}
       {scannedData && (
-        <div className="scanned-message">
+        <div className="scanned-data">
           <p>Scanned Code: {scannedData}</p>
         </div>
       )}
-
-      <button onClick={() => setScannedData(null)}>Get Started</button>
     </div>
   );
 };
