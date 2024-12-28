@@ -3,7 +3,7 @@ import React from "react";
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
-      #LouMag - Together Forever
+      <p className="footer-text"># BecomingTheFrempongs - Together Forever</p>
     </footer>
   );
 };

@@ -7,7 +7,8 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Header */
+
+/* Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
@@ -18,34 +19,49 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.header img {
+.header-logo img {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.header h1 {
+.header-title {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
+  flex: 1; /* Ensures the title is centered */
 }
 
-.header .icon {
+.header-icon {
   font-size: 24px;
-  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-/* Footer */
+.header-icon:hover {
+  color: #f0f0f0;
+}
+
+
+/* Footer Styles */
+/* Footer Styles */
 .footer {
-  text-align: center;
+  position: fixed; /* Ensures the footer stays at the bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensures the footer spans the full width */
   padding: 16px;
   background-color: #cc5500; /* Burnt Orange */
   color: white;
+  text-align: center;
   font-size: 14px;
   font-weight: bold;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* QR Scanner Page */
 .qr-scanner-page {
