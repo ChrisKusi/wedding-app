@@ -1,11 +1,46 @@
 /* index.css */
-
-/* General Styles */
+/* Global Background with Watermark */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background: url('public/img/img2.jpg') no-repeat center right fixed; /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the viewport */
+  opacity: 100; /* Reduces visibility to make it look like a watermark */
+  color: #333;
+  
 }
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Light overlay for watermark visibility */
+  z-index: -1; /* Places the overlay behind the content */
+}
+
+/* Content Wrapper */
+.content {
+  flex: 1;
+  padding: 16px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.85); /* Slightly transparent white background */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds depth */
+  max-width: 800px;
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect behind content */
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the app spans the full viewport height */
+}
+
+
 
 
 /* Header Styles */
