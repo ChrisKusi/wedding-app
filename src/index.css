@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: url('/img/img2.jpg') no-repeat center right fixed; /* Replace with your image path */
+  background: url('/img/img2.jpg') no-repeat center center fixed; /* Replace with your image path */
   background-size: cover; /* Ensures the image covers the viewport */
   opacity: 100; /* Reduces visibility to make it look like a watermark */
   color: #333;
