@@ -8,8 +8,6 @@ const QRScannerPage: React.FC = () => {
   const handleScan = (data: any) => {
     if (data) {
       setScannedData(data.text);
-      console.log("Scanned Code:", data.text); // Log the scanned data for debugging
-      // Add logic here to update records or perform an action with the scanned data
     }
   };
 
@@ -26,7 +24,7 @@ const QRScannerPage: React.FC = () => {
       <div className="scanner-card">
         {!isCameraActive ? (
           <img
-            src="img\QR.png" // Replace with your placeholder image
+            src="/img/QR.png" // Correct path to placeholder image
             alt="Placeholder"
             className="placeholder-image"
           />

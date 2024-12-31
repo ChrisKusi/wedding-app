@@ -8,6 +8,7 @@ body {
   opacity: 100; /* Reduces visibility to make it look like a watermark */
   color: #333;
   
+  
 }
 
 body::before {
@@ -21,17 +22,16 @@ body::before {
   z-index: -1; /* Places the overlay behind the content */
 }
 
+
 /* Content Wrapper */
 .content {
   flex: 1;
-  padding: 10px;
-  margin: 20px auto;
-  background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds depth */
-  max-width: 800px;
-  backdrop-filter: blur(5px); /* Adds a subtle blur effect behind content */
+  padding: 0; /* Remove padding */
+  margin: 0 auto; /* Center it without vertical margins */
+  max-width: 100%; /* Prevent content from inheriting fixed widths */
+  background: transparent; /* Remove background to avoid interference */
 }
+
 
 /* App Container */
 .app-container {
@@ -80,7 +80,7 @@ body::before {
 }
 
 
-/* Footer Styles */
+
 /* Footer Styles */
 .footer {
   position: fixed; /* Ensures the footer stays at the bottom */
@@ -96,67 +96,87 @@ body::before {
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Scanner Card */
-.scanner-card {
-  width: 100%;
-  max-width: 280px;
-  height: 280px; /* Fix the height to match the width for a square layout */
-  background: #f9f9f9;
-  border: 2px dashed #50c878;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Placeholder Image */
-.placeholder-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensure the image fits without distortion */
-}
-
-/* Activate Camera Button */
-.activate-camera-button {
-  padding: 10px 20px; /* Slightly reduced padding */
-  font-size: 14px; /* Reduced font size */
-  font-weight: bold;
-  color: white;
-  background-color: #50c878; /* Emerald Green */
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.activate-camera-button:hover {
-  background-color: #3fa861; /* Slightly darker green on hover */
-}
-
-/* Title */
-.qr-title {
-  font-size: 20px; /* Reduced font size */
-  font-weight: bold;
-  margin-bottom: 12px; /* Reduced margin */
-  color: #333;
-}
-
-/* Page Layout */
+/* QR Scanner Page */
 .qr-scanner-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 136px); /* Ensures it fits above the footer */
   padding: 16px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.95); /* Subtle overlay */
+  border-radius: 25px; /* Rounded corners for the card/page container */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  max-width: 400px; /* Restrict the max width for centered card look */
+  width: 100%; /* Make it responsive */
+  margin: 60px auto; /* Add vertical spacing above and below the card */
 }
 
 
+/* Title */
+.qr-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24px; /* Add spacing below the title */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
 
+/* Scanner Card */
+.scanner-card {
+  width: 100%;
+  max-width: 280px; /* Compact size */
+  height: 280px; /* Square layout */
+  background: #ffffff; /* Clean white background */
+  border: 2px solid #50c878; /* Emerald Green border */
+  border-radius: 20px; /* Rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+
+/* Placeholder Image */
+.placeholder-image {
+  width: 90%;
+  height: 90%;
+  object-fit: contain; /* Ensure the image fits well */
+  border-radius: 16px; /* Slightly round the placeholder */
+}
+
+/* Activate Camera Button */
+.activate-camera-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #50c878; /* Emerald Green */
+  border: none;
+  border-radius: 10px; /* More rounded button corners */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.activate-camera-button:hover {
+  background-color: #3fa861; /* Slightly darker green on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Scanned Data Display */
+.scanned-data {
+  background: #50c878; /* Emerald Green */
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 
 /* Attendees Page */
