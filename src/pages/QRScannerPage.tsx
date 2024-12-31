@@ -61,7 +61,7 @@
 // export default QRScannerPage;
 
 import React, { useState } from "react";
-import QrReader from "react-qr-scanner";
+import Webcam from "react-webcam";
 
 const QRScannerPage: React.FC = () => {
   const [isCameraActive, setIsCameraActive] = useState(false);
@@ -73,8 +73,8 @@ const QRScannerPage: React.FC = () => {
     }
   };
 
-  const handleError = (error: any) => {
-    console.error("QR Scanner Error:", error);
+  const videoConstraints = {
+    facingMode: "environment", // Use the back camera
   };
 
   return (
@@ -91,11 +91,11 @@ const QRScannerPage: React.FC = () => {
             className="placeholder-image"
           />
         ) : (
-          <QrReader
-            delay={300}
-            onError={handleError}
-            onScan={handleScan}
-            className="camera-feed" // Apply the new class
+          <Webcam
+            videoConstraints={videoConstraints}
+            className="camera-feed"
+            screenshotFormat="image/jpeg"
+            onUserMediaError={(error) => console.error("Camera Error:", error)}
           />
         )}
       </div>
@@ -121,3 +121,5 @@ const QRScannerPage: React.FC = () => {
 };
 
 export default QRScannerPage;
+
+
