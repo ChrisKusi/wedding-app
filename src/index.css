@@ -198,18 +198,20 @@ body::before {
   min-height: calc(100vh - 136px); /* Full height minus header and footer */
   padding: 0 20px; /* Add padding for better spacing */
   background: transparent; /* Keep the background image visible */
+  margin-top: 64px; /* Ensure it's detached from the header */
 }
 
+/* Full Page Card */
 .attendance-card {
   width: 100%;
-  max-width: 800px; /* Wider card for better readability */
+  max-width: 800px; /* Restrict width for readability */
+  height: calc(100vh - 136px); /* Fill the space between header and footer */
   background: rgba(0, 0, 0, 0.7); /* Black with 70% transparency */
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   color: white;
-  max-height: calc(100vh - 200px); /* Make it scrollable between header and footer */
-  overflow-y: auto; /* Enable scrolling */
+  overflow-y: auto; /* Enable scrolling for large lists */
 }
 
 .attendance-card h1 {
@@ -235,7 +237,7 @@ body::before {
   border-bottom: none;
 }
 
-/* Add a smooth scrollbar style */
+/* Scrollbar Style */
 .attendance-card::-webkit-scrollbar {
   width: 8px;
 }
