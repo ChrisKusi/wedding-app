@@ -47,8 +47,9 @@
 // export default QRScannerPage;
 
 
-import React, { useState } from "react";
-import QrReader from "react-qr-scanner";
+import React, { useRef, useState, useEffect } from "react";
+import Webcam from "react-webcam";
+import jsQR from "jsqr";
 
 const QRScannerPage: React.FC = () => {
   const [isCameraActive, setIsCameraActive] = useState(false);
@@ -56,37 +57,54 @@ const QRScannerPage: React.FC = () => {
   const [modal, setModal] = useState<{ type: string; message: string } | null>(
     null
   );
+  const webcamRef = useRef<Webcam>(null);
 
-  const handleScan = (data: any) => {
-    if (data && data.text) {
-      const code = data.text.trim(); // Trim whitespace if any
-      if (!/^\d{3}$/.test(code) || Number(code) < 1 || Number(code) > 150) {
-        // Invalid code
-        setModal({ type: "error", message: "Invalid QR code scanned." });
-      } else if (attendees.includes(code)) {
-        // Duplicate code
-        setModal({ type: "error", message: `Attendee code ${code} already scanned.` });
-      } else {
-        // Valid code
-        setAttendees((prev) => [...prev, code]); // Add to attendees list
-        setModal({ type: "success", message: `Attendee code ${code} scanned successfully.` });
+  const handleScan = () => {
+    if (webcamRef.current) {
+      const video = webcamRef.current.video;
+
+      if (video) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        if (context) {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+          const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code && code.data) {
+            const scannedCode = code.data.trim();
+            if (!/^\d{3}$/.test(scannedCode) || Number(scannedCode) < 1 || Number(scannedCode) > 150) {
+              setModal({ type: "error", message: "Invalid QR code scanned." });
+            } else if (attendees.includes(scannedCode)) {
+              setModal({ type: "error", message: `Attendee code ${scannedCode} already scanned.` });
+            } else {
+              setAttendees((prev) => [...prev, scannedCode]);
+              setModal({ type: "success", message: `Attendee code ${scannedCode} scanned successfully.` });
+            }
+          }
+        }
       }
     }
   };
 
-  const handleError = (error: any) => {
-    console.error("QR Scanner Error:", error);
-    setModal({ type: "error", message: "An error occurred while scanning the QR code." });
-  };
+  useEffect(() => {
+    if (isCameraActive) {
+      const interval = setInterval(() => {
+        handleScan();
+      }, 500); // Scan every 500ms
+      return () => clearInterval(interval);
+    }
+  }, [isCameraActive]);
 
   const closeModal = () => setModal(null);
 
   return (
     <div className="qr-scanner-page">
-      {/* Title */}
       <h1 className="qr-title">Scan to Register</h1>
-
-      {/* Scanner Card */}
       <div className="scanner-card">
         {!isCameraActive ? (
           <img
@@ -95,16 +113,14 @@ const QRScannerPage: React.FC = () => {
             className="placeholder-image"
           />
         ) : (
-          <QrReader
-            delay={300}
-            onError={handleError}
-            onScan={handleScan}
+          <Webcam
+            ref={webcamRef}
+            videoConstraints={{ facingMode: "environment" }}
             className="camera-feed"
           />
         )}
       </div>
 
-      {/* Activate Camera Button */}
       {!isCameraActive && (
         <button
           onClick={() => setIsCameraActive(true)}
@@ -114,7 +130,6 @@ const QRScannerPage: React.FC = () => {
         </button>
       )}
 
-      {/* Modals */}
       {modal && (
         <div
           className={`modal ${
