@@ -54,7 +54,7 @@ body::before {
   background-color: #50c878; /* Emerald Green */
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding-bottom: 30px; /* Space below the header */
+ 
 }
 
 .header-logo img {
@@ -136,8 +136,15 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  overflow: hidden; /* Ensures the camera feed is clipped to the rounded corners */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the feed fills the box without distortion */
+  border-radius: inherit; /* Inherits the rounded corners of the parent */
 }
 
 
@@ -151,7 +158,7 @@ body::before {
 
 /* Activate Camera Button */
 .activate-camera-button {
-  padding: 12px 24px;
+  padding: 12px 25px;
   font-size: 16px;
   font-weight: bold;
   color: white;
@@ -161,6 +168,7 @@ body::before {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  margin: 15px auto;
 }
 
 .activate-camera-button:hover {
