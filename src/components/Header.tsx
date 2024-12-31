@@ -41,7 +41,7 @@ const Header: React.FC = () => {
   const isAttendeesPage = location.pathname === "/attendees";
 
   return (
-    <header className="w-full flex items-center justify-between p-4 bg-emerald-600 text-white shadow-md">
+    <header className="header">
       {/* Logo */}
       <img
         src="/img/img1.jpg" // Replace with the correct image path

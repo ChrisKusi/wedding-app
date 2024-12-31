@@ -45,17 +45,17 @@ body::before {
 
 
 
-/* Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 13px;
   background-color: #50c878; /* Emerald Green */
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- 
+  opacity: 1; /* Ensures it's not transparent */
 }
+
 
 .header-logo img {
   width: 48px;
