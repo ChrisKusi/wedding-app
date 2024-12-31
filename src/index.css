@@ -112,7 +112,7 @@ body::before {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
   max-width: 400px; /* Restrict the max width for centered card look */
   width: 100%; /* Make it responsive */
-  margin: 60px auto; /* Add vertical spacing above and below the card */
+  margin: 100px auto; /* Add vertical spacing above and below the card */
 }
 
 
