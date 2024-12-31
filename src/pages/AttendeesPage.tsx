@@ -17,7 +17,7 @@ const AttendeesPage: React.FC = () => {
         {attendees.length > 0 ? (
           attendees.map((code, index) => (
             <li key={index} className="border-b py-2">
-              QR Code: {code}
+              Attendee Code: {code}
             </li>
           ))
         ) : (

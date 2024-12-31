@@ -47,7 +47,7 @@
 // export default QRScannerPage;
 
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Webcam from "react-webcam";
 import jsQR from "jsqr";
 
@@ -57,7 +57,19 @@ const QRScannerPage: React.FC = () => {
   const [modal, setModal] = useState<{ type: string; message: string } | null>(
     null
   );
-  const webcamRef = useRef<Webcam>(null);
+  const webcamRef = React.useRef<Webcam>(null);
+
+  useEffect(() => {
+    const storedAttendees = localStorage.getItem("attendees");
+    if (storedAttendees) {
+      setAttendees(JSON.parse(storedAttendees));
+    }
+  }, []);
+
+  const saveAttendees = (newAttendees: string[]) => {
+    setAttendees(newAttendees);
+    localStorage.setItem("attendees", JSON.stringify(newAttendees));
+  };
 
   const handleScan = () => {
     if (webcamRef.current) {
@@ -77,13 +89,24 @@ const QRScannerPage: React.FC = () => {
 
           if (code && code.data) {
             const scannedCode = code.data.trim();
+
             if (!/^\d{3}$/.test(scannedCode) || Number(scannedCode) < 1 || Number(scannedCode) > 150) {
+              // Invalid code
               setModal({ type: "error", message: "Invalid QR code scanned." });
             } else if (attendees.includes(scannedCode)) {
-              setModal({ type: "error", message: `Attendee code ${scannedCode} already scanned.` });
+              // Duplicate code
+              setModal({
+                type: "error",
+                message: `Attendee code ${scannedCode} already scanned.`,
+              });
             } else {
-              setAttendees((prev) => [...prev, scannedCode]);
-              setModal({ type: "success", message: `Attendee code ${scannedCode} scanned successfully.` });
+              // Valid code
+              const updatedAttendees = [...attendees, scannedCode];
+              saveAttendees(updatedAttendees); // Save to state and localStorage
+              setModal({
+                type: "success",
+                message: `Attendee code ${scannedCode} scanned successfully.`,
+              });
             }
           }
         }
@@ -98,7 +121,7 @@ const QRScannerPage: React.FC = () => {
       }, 500); // Scan every 500ms
       return () => clearInterval(interval);
     }
-  }, [isCameraActive]);
+  }, [isCameraActive, attendees]);
 
   const closeModal = () => setModal(null);
 
