@@ -192,37 +192,43 @@ body::before {
 
 /* Attendees Page */
 .attendees-page {
-  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 136px); /* Full height minus header and footer */
+  padding: 20px;
+  background: transparent; /* Keep the background image visible */
 }
 
-.attendees-page h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.attendance-card {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.7); /* Black with 70% transparency */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  color: white;
 }
 
-.attendees-page .back-arrow {
-  font-size: 24px;
-  color: #50c878; /* Emerald Green */
-  cursor: pointer;
-  margin-bottom: 16px;
-  display: inline-block;
+.attendance-card h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.attendees-page ul {
+.attendance-card ul {
   list-style: none;
   padding: 0;
 }
 
-.attendees-page li {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  font-size: 16px;
+.attendance-card li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light white border */
 }
 
-.attendees-page li:last-child {
+.attendance-card li:last-child {
   border-bottom: none;
 }
+
 
 /* Modals */
 .modal {
