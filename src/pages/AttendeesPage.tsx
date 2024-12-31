@@ -45,32 +45,26 @@ const AttendeesPage: React.FC = () => {
 
   return (
     <div className="attendees-page">
-      <div className="attendance-card">
-        <h1 className="text-2xl font-bold mb-4 text-center text-white">
-          Scanned Attendees
-        </h1>
-        <ul>
-          {attendees.length > 0 ? (
-            attendees.map((code, index) => (
-              <li
-                key={index}
-                className="py-2 text-lg text-white flex justify-between"
-              >
-                <span>{index + 1}.</span> {/* Numbering */}
-                <span>Attendee Code: {code}</span>
-              </li>
-            ))
-          ) : (
-            <p className="text-lg text-white text-center">
-              No attendees scanned yet.
-            </p>
-          )}
-        </ul>
-      </div>
+      <h1>Scanned Attendees</h1>
+      <ul>
+        {attendees.length > 0 ? (
+          attendees.map((code, index) => (
+            <li key={index}>
+              <span>{index + 1}.</span> {/* Numbering */}
+              <span>Attendee Code: {code}</span>
+            </li>
+          ))
+        ) : (
+          <p className="text-lg text-white text-center">
+            No attendees scanned yet.
+          </p>
+        )}
+      </ul>
     </div>
   );
 };
 
 export default AttendeesPage;
+
 
 

@@ -24,27 +24,6 @@ body::before {
   z-index: -1; /* Places the overlay behind the content */
 }
 
-
-/* Content Wrapper */
-.content {
-  flex: 1;
-  padding: 0; /* Remove padding */
-  margin: 0 auto; /* Center it without vertical margins */
-  max-width: 100%; /* Prevent content from inheriting fixed widths */
-  background: transparent; /* Remove background to avoid interference */
-}
-
-
-/* App Container */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensures the app spans the full viewport height */
-}
-
-
-
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -193,59 +172,57 @@ body::before {
 /* Attendees Page */
 .attendees-page {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center;
   min-height: calc(100vh - 136px); /* Full height minus header and footer */
-  background: transparent; /* Keep the background image visible */
   padding: 0;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  overflow-y: auto; /* Allow scrolling for the entire page content */
 }
 
-/* Full Page Card */
-.attendance-card {
-  width: 100%; /* Full width of the page */
-  height: calc(100vh - 136px); /* Fill the space between header and footer */
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-  padding: 20px;
-  overflow-y: auto; /* Enable scrolling for attendee list */
+/* Header Section in Card */
+.attendees-page h1 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 2rem;
   color: white;
 }
 
-/* Header */
-.attendance-card h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-}
-
 /* Attendee List */
-.attendance-card ul {
+.attendees-page ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%; /* Full width for the list */
+  max-width: 800px; /* Restrict maximum width for readability */
 }
 
-.attendance-card li {
-  padding: 12px 0;
+.attendees-page li {
+  padding: 12px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light white border */
+  font-size: 1rem;
+  color: white;
   display: flex;
-  justify-content: space-between; /* Number and text aligned */
+  justify-content: space-between; /* Align numbering and code properly */
 }
 
-.attendance-card li:last-child {
+.attendees-page li:last-child {
   border-bottom: none;
 }
 
-/* Scrollbar Style */
-.attendance-card::-webkit-scrollbar {
-  width: 8px;
+/* Scrollbar Styling */
+.attendees-page::-webkit-scrollbar {
+  width: 10px;
 }
 
-.attendance-card::-webkit-scrollbar-thumb {
+.attendees-page::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
-.attendance-card::-webkit-scrollbar-track {
+.attendees-page::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
