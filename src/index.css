@@ -52,6 +52,7 @@ body::before {
   background-color: #50c878; /* Emerald Green */
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px; /* Space below the header */
 }
 
 .header-logo img {
