@@ -194,32 +194,30 @@ body::before {
 .attendees-page {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Start at the top for scrolling */
+  align-items: flex-start;
   min-height: calc(100vh - 136px); /* Full height minus header and footer */
-  padding: 0 20px; /* Add padding for better spacing */
   background: transparent; /* Keep the background image visible */
-  margin-top: 64px; /* Ensure it's detached from the header */
+  padding: 0;
 }
 
 /* Full Page Card */
 .attendance-card {
-  width: 100%;
-  max-width: 800px; /* Restrict width for readability */
+  width: 100%; /* Full width of the page */
   height: calc(100vh - 136px); /* Fill the space between header and footer */
-  background: rgba(0, 0, 0, 0.7); /* Black with 70% transparency */
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  overflow-y: auto; /* Enable scrolling for attendee list */
   color: white;
-  overflow-y: auto; /* Enable scrolling for large lists */
 }
 
+/* Header */
 .attendance-card h1 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
+/* Attendee List */
 .attendance-card ul {
   list-style: none;
   padding: 0;
@@ -230,7 +228,7 @@ body::before {
   padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light white border */
   display: flex;
-  justify-content: space-between; /* Number on the left, text on the right */
+  justify-content: space-between; /* Number and text aligned */
 }
 
 .attendance-card li:last-child {
