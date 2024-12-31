@@ -224,6 +224,40 @@ body::before {
   border-bottom: none;
 }
 
+/* Modals */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-success {
+  background-color: #50c878; /* Emerald Green */
+  color: white;
+}
+
+.modal-error {
+  background-color: #cc5500; /* Burnt Orange */
+  color: white;
+}
+
+.modal button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+
+
 
 @tailwind base;
 @tailwind components;
