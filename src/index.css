@@ -261,6 +261,25 @@ body::before {
   cursor: pointer;
 }
 
+/* Clear Data Button */
+.clear-data-button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #cc5500; /* Burnt Orange */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.clear-data-button:hover {
+  background-color: #e65b00; /* Slightly lighter orange */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
 
 
 @tailwind base;
