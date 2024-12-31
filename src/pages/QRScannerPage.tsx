@@ -65,16 +65,9 @@ import Webcam from "react-webcam";
 
 const QRScannerPage: React.FC = () => {
   const [isCameraActive, setIsCameraActive] = useState(false);
-  const [scannedData, setScannedData] = useState<string | null>(null);
-
-  const handleScan = (data: any) => {
-    if (data) {
-      setScannedData(data.text);
-    }
-  };
 
   const videoConstraints = {
-    facingMode: "environment", // Use the back camera
+    facingMode: { exact: "environment" }, // Explicitly request the back camera
   };
 
   return (
@@ -109,17 +102,11 @@ const QRScannerPage: React.FC = () => {
           Activate Camera
         </button>
       )}
-
-      {/* Scanned Data Display */}
-      {scannedData && (
-        <div className="scanned-data">
-          <p>Scanned Code: {scannedData}</p>
-        </div>
-      )}
     </div>
   );
 };
 
 export default QRScannerPage;
+
 
 
